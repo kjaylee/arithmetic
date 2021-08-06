@@ -3,10 +3,14 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A4940B0E26BCAFFD00FE4D3F /* UILabel+Outline.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4940B0D26BCAFFD00FE4D3F /* UILabel+Outline.swift */; };
+		A4940B1026BCB31000FE4D3F /* UIImage+Utils.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4940B0F26BCB31000FE4D3F /* UIImage+Utils.swift */; };
+		A4940B1326BCD64800FE4D3F /* SwiftEntryKit in Frameworks */ = {isa = PBXBuildFile; productRef = A4940B1226BCD64800FE4D3F /* SwiftEntryKit */; };
+		A4940B1626BCED4000FE4D3F /* Haptica in Frameworks */ = {isa = PBXBuildFile; productRef = A4940B1526BCED4000FE4D3F /* Haptica */; };
 		A4EB066326BBAF7C0049EDA3 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB066226BBAF7C0049EDA3 /* AppDelegate.swift */; };
 		A4EB066526BBAF7C0049EDA3 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB066426BBAF7C0049EDA3 /* SceneDelegate.swift */; };
 		A4EB066726BBAF7C0049EDA3 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB066626BBAF7C0049EDA3 /* RootViewController.swift */; };
@@ -16,8 +20,8 @@
 		A4EB067026BBAF7E0049EDA3 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A4EB066E26BBAF7E0049EDA3 /* LaunchScreen.storyboard */; };
 		A4EB067226BBAF7E0049EDA3 /* Alert.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB067126BBAF7E0049EDA3 /* Alert.swift */; };
 		A4EB067426BBAF7E0049EDA3 /* AlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB067326BBAF7E0049EDA3 /* AlertAction.swift */; };
-		A4EB067626BBAF7E0049EDA3 /* NibExampleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB067526BBAF7E0049EDA3 /* NibExampleView.swift */; };
-		A4EB067826BBAF7E0049EDA3 /* NibExampleView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4EB067726BBAF7E0049EDA3 /* NibExampleView.xib */; };
+		A4EB067626BBAF7E0049EDA3 /* AlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB067526BBAF7E0049EDA3 /* AlertView.swift */; };
+		A4EB067826BBAF7E0049EDA3 /* AlertView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A4EB067726BBAF7E0049EDA3 /* AlertView.xib */; };
 		A4EB067A26BBAF7E0049EDA3 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB067926BBAF7E0049EDA3 /* Font.swift */; };
 		A4EB067C26BBAF7E0049EDA3 /* NibView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB067B26BBAF7E0049EDA3 /* NibView.swift */; };
 		A4EB067E26BBAF7E0049EDA3 /* UIControl+Combine.swift in Sources */ = {isa = PBXBuildFile; fileRef = A4EB067D26BBAF7E0049EDA3 /* UIControl+Combine.swift */; };
@@ -49,6 +53,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		A4940B0D26BCAFFD00FE4D3F /* UILabel+Outline.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UILabel+Outline.swift"; sourceTree = "<group>"; };
+		A4940B0F26BCB31000FE4D3F /* UIImage+Utils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Utils.swift"; sourceTree = "<group>"; };
 		A4EB065F26BBAF7C0049EDA3 /* arithmetic.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = arithmetic.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A4EB066226BBAF7C0049EDA3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A4EB066426BBAF7C0049EDA3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -59,8 +65,8 @@
 		A4EB066F26BBAF7E0049EDA3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A4EB067126BBAF7E0049EDA3 /* Alert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Alert.swift; sourceTree = "<group>"; };
 		A4EB067326BBAF7E0049EDA3 /* AlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertAction.swift; sourceTree = "<group>"; };
-		A4EB067526BBAF7E0049EDA3 /* NibExampleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibExampleView.swift; sourceTree = "<group>"; };
-		A4EB067726BBAF7E0049EDA3 /* NibExampleView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = NibExampleView.xib; sourceTree = "<group>"; };
+		A4EB067526BBAF7E0049EDA3 /* AlertView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertView.swift; sourceTree = "<group>"; };
+		A4EB067726BBAF7E0049EDA3 /* AlertView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AlertView.xib; sourceTree = "<group>"; };
 		A4EB067926BBAF7E0049EDA3 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
 		A4EB067B26BBAF7E0049EDA3 /* NibView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NibView.swift; sourceTree = "<group>"; };
 		A4EB067D26BBAF7E0049EDA3 /* UIControl+Combine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIControl+Combine.swift"; sourceTree = "<group>"; };
@@ -84,6 +90,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A4940B1326BCD64800FE4D3F /* SwiftEntryKit in Frameworks */,
+				A4940B1626BCED4000FE4D3F /* Haptica in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,14 +144,16 @@
 				A4EB066E26BBAF7E0049EDA3 /* LaunchScreen.storyboard */,
 				A4EB067126BBAF7E0049EDA3 /* Alert.swift */,
 				A4EB067326BBAF7E0049EDA3 /* AlertAction.swift */,
-				A4EB067526BBAF7E0049EDA3 /* NibExampleView.swift */,
-				A4EB067726BBAF7E0049EDA3 /* NibExampleView.xib */,
+				A4EB067526BBAF7E0049EDA3 /* AlertView.swift */,
+				A4EB067726BBAF7E0049EDA3 /* AlertView.xib */,
 				A4EB067926BBAF7E0049EDA3 /* Font.swift */,
 				A4EB067B26BBAF7E0049EDA3 /* NibView.swift */,
 				A4EB067D26BBAF7E0049EDA3 /* UIControl+Combine.swift */,
 				A4EB067F26BBAF7E0049EDA3 /* UIColor+Utils.swift */,
 				A4EB068126BBAF7E0049EDA3 /* UIScreen+Utils.swift */,
 				A4EB068326BBAF7E0049EDA3 /* CGRect+Utils.swift */,
+				A4940B0D26BCAFFD00FE4D3F /* UILabel+Outline.swift */,
+				A4940B0F26BCB31000FE4D3F /* UIImage+Utils.swift */,
 				A4EB068526BBAF7E0049EDA3 /* UIView+Nib.swift */,
 				A4EB068726BBAF7E0049EDA3 /* Object+ClassName.swift */,
 				A4EB068926BBAF7E0049EDA3 /* Info.plist */,
@@ -186,6 +196,10 @@
 			dependencies = (
 			);
 			name = arithmetic;
+			packageProductDependencies = (
+				A4940B1226BCD64800FE4D3F /* SwiftEntryKit */,
+				A4940B1526BCED4000FE4D3F /* Haptica */,
+			);
 			productName = arithmetic;
 			productReference = A4EB065F26BBAF7C0049EDA3 /* arithmetic.app */;
 			productType = "com.apple.product-type.application";
@@ -257,6 +271,10 @@
 				Base,
 			);
 			mainGroup = A4EB065626BBAF7C0049EDA3;
+			packageReferences = (
+				A4940B1126BCD64800FE4D3F /* XCRemoteSwiftPackageReference "SwiftEntryKit" */,
+				A4940B1426BCED4000FE4D3F /* XCRemoteSwiftPackageReference "Haptica" */,
+			);
 			productRefGroup = A4EB066026BBAF7C0049EDA3 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -274,7 +292,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A4EB066D26BBAF7E0049EDA3 /* Assets.xcassets in Resources */,
-				A4EB067826BBAF7E0049EDA3 /* NibExampleView.xib in Resources */,
+				A4EB067826BBAF7E0049EDA3 /* AlertView.xib in Resources */,
 				A4EB067026BBAF7E0049EDA3 /* LaunchScreen.storyboard in Resources */,
 				A4EB068C26BBAF7E0049EDA3 /* Main.storyboard in Resources */,
 			);
@@ -303,6 +321,7 @@
 			files = (
 				A4EB067226BBAF7E0049EDA3 /* Alert.swift in Sources */,
 				A4EB066326BBAF7C0049EDA3 /* AppDelegate.swift in Sources */,
+				A4940B0E26BCAFFD00FE4D3F /* UILabel+Outline.swift in Sources */,
 				A4EB066526BBAF7C0049EDA3 /* SceneDelegate.swift in Sources */,
 				A4EB068026BBAF7E0049EDA3 /* UIColor+Utils.swift in Sources */,
 				A4EB066926BBAF7C0049EDA3 /* RootViewModel.swift in Sources */,
@@ -311,11 +330,12 @@
 				A4EB067E26BBAF7E0049EDA3 /* UIControl+Combine.swift in Sources */,
 				A4EB068626BBAF7E0049EDA3 /* UIView+Nib.swift in Sources */,
 				A4EB067A26BBAF7E0049EDA3 /* Font.swift in Sources */,
+				A4940B1026BCB31000FE4D3F /* UIImage+Utils.swift in Sources */,
 				A4EB068826BBAF7E0049EDA3 /* Object+ClassName.swift in Sources */,
 				A4EB068226BBAF7E0049EDA3 /* UIScreen+Utils.swift in Sources */,
 				A4EB066726BBAF7C0049EDA3 /* RootViewController.swift in Sources */,
 				A4EB067426BBAF7E0049EDA3 /* AlertAction.swift in Sources */,
-				A4EB067626BBAF7E0049EDA3 /* NibExampleView.swift in Sources */,
+				A4EB067626BBAF7E0049EDA3 /* AlertView.swift in Sources */,
 				A4EB068426BBAF7E0049EDA3 /* CGRect+Utils.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -649,6 +669,38 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		A4940B1126BCD64800FE4D3F /* XCRemoteSwiftPackageReference "SwiftEntryKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/huri000/SwiftEntryKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.2.7;
+			};
+		};
+		A4940B1426BCED4000FE4D3F /* XCRemoteSwiftPackageReference "Haptica" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/efremidze/Haptica";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 3.0.2;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A4940B1226BCD64800FE4D3F /* SwiftEntryKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4940B1126BCD64800FE4D3F /* XCRemoteSwiftPackageReference "SwiftEntryKit" */;
+			productName = SwiftEntryKit;
+		};
+		A4940B1526BCED4000FE4D3F /* Haptica */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = A4940B1426BCED4000FE4D3F /* XCRemoteSwiftPackageReference "Haptica" */;
+			productName = Haptica;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = A4EB065726BBAF7C0049EDA3 /* Project object */;
 }

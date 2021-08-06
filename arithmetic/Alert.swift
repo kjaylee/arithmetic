@@ -100,8 +100,8 @@ class Alert {
         return attributes
     }()
     lazy var bottomAttributes: EKAttributes = {
-        var attributes: EKAttributes = .bottomToast
-        attributes.statusBar = .hidden
+        var attributes: EKAttributes = .bottomNote
+        attributes.statusBar = .inferred
         attributes.windowLevel = .normal
         attributes.displayDuration = .infinity
         attributes.entranceAnimation = .init(
@@ -127,9 +127,9 @@ class Alert {
             )
         )
         attributes.entryInteraction = .absorbTouches
-        attributes.screenInteraction = .dismiss
+        attributes.screenInteraction = .absorbTouches
         attributes.entryBackground = .color(color: .clear)
-        attributes.screenBackground = .color(color: .dimmedDarkBackground)
+        attributes.screenBackground = .color(color: .clear)
         attributes.shadow = .active(
             with: .init(
                 color: .black,
@@ -138,7 +138,7 @@ class Alert {
             )
         )
         attributes.scroll = .enabled(
-            swipeable: true,
+            swipeable: false,
             pullbackAnimation: .jolt
         )
         attributes.positionConstraints.keyboardRelation = .bind(
@@ -168,20 +168,16 @@ class Alert {
 //MARK: -
 extension Alert {
     func showExample() {
-        let customView = NibExampleView()
+        let customView = AlertView()
         SwiftEntryKit.display(entry: customView, using: self.nomalAttributes)
     }
-    func alert(title: String?,
-               text: String? = nil) -> UIView {
-        let customView = UIView()
-        customView.title = title
-        customView.text = text
-        customView.closeAction = {
-            SwiftEntryKit.dismiss()
-        }
-        return customView
+    func alert(title: String?, alertAction: AlertAction? = nil ) -> AlertView {
+        let v = AlertView()
+        v.alertAction = alertAction
+        v.title = title
+        return v
     }
-    func show(alert: UIView, type: PositionType) {
+    func show(alert: UIView, type: PositionType = .bottom) {
         var attributes = self.nomalAttributes
         switch type {
         case .center:
