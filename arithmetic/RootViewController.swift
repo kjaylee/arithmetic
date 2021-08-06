@@ -43,8 +43,6 @@ class RootViewController: UIViewController {
     @IBOutlet weak var examplesStack: UIStackView!
     @IBOutlet weak var scoreBoardButton: UIButton!
     @IBOutlet weak var scoreBoard: UILabel!
-    var scoreCount: Int = 0
-    var totalCount: Int = 0
     init(nibName: String?) {
         viewModel = RootViewModel()
         super.init(nibName: nibName, bundle: nil)
@@ -71,11 +69,26 @@ class RootViewController: UIViewController {
     func binded() {
         //Do bind.
         self.setButton.publisher(for: .touchUpInside).sink { button in
+            self.viewModel.isWrong = !self.viewModel.isWrong
             self.test()
+        }.store(in: &self.subscriptions)
+//        self.scoreBoardButton.publisher(for: .touchUpInside).sink { [unowned self] button in
+//            //self.test(isWrong:true)
+//        }.store(in: &self.subscriptions)
+        self.viewModel.$isWrong.sink { [weak setButton] isWrong in
+            if isWrong {
+                setButton?.tintColor = .red
+            } else {
+                setButton?.tintColor = .label
+            }
         }.store(in: &self.subscriptions)
     }
     func test() {
-        self.viewModel.next()
+        if self.viewModel.isWrong {
+            self.viewModel.nextWrong()
+        } else {
+            self.viewModel.next()
+        }
         self.examplesStack.removeAllArrangedSubviews()
         for v in self.places {
             v.isHidden = v.tag != 1
@@ -85,7 +98,10 @@ class RootViewController: UIViewController {
             } as? UILabel)?.textColor = .label
         }
         self.problemLabel.text = self.viewModel.currentArithmetic?.problem()
-        if let hiddenInteger = answer(numbers: self.viewModel.currentArithmetic?.answer()) {
+        let hiddenIndex = self.viewModel.currentHiddenIndex
+        let numbers = self.viewModel.currentArithmetic?.answer() ?? []
+        answer(numbers: numbers,hiddenIndex: hiddenIndex)
+        if let hiddenInteger = Int(numbers[hiddenIndex]) {
             print("Hidden Integer = \(hiddenInteger)")
             let examples = self.viewModel.examples(collectedAnswer: hiddenInteger)
             print(examples)
@@ -106,15 +122,12 @@ class RootViewController: UIViewController {
                 button.addTarget(self, action: #selector(selectedAnswer(_:)), for: .touchUpInside)
                 self.examplesStack.addArrangedSubview(button)
             }
-        } else {
-            self.test()
         }
     }
     @objc func selectedAnswer(_ sender: UIButton?) {
         guard let button = sender else {
             return
         }
-        self.totalCount += 1
         print("Answer: \(button.tag)")
         let hiddenPlace = self.places[self.viewModel.currentHiddenIndex]
         var alert = "정답입니다!"
@@ -122,9 +135,10 @@ class RootViewController: UIViewController {
             print("Right!")
             hiddenPlace.backgroundColor = .clear
             sender?.isSelected = true
-            self.scoreCount += 1
-            Haptic.play("..oO-oO-oO-oO-oO-Oo..", delay: 0.1)
+            self.viewModel.scoreCount += 1
+            Haptic.impact(.heavy).generate()
         } else {
+            self.viewModel.wrong()
             alert = "틀렸습니다!"
             print("Wrong!")
             sender?.isSelected = true
@@ -132,7 +146,7 @@ class RootViewController: UIViewController {
             let hiddenLabel = hiddenPlace.subviews.first { view in
                 return type(of: view) == UILabel.self
             } as? UILabel
-            Haptic.impact(.heavy).generate()
+            Haptic.play("..oO-oO-oO-oO-oO-Oo..", delay: 0.1)
             UIView.animate(withDuration: 0.8) {
                 hiddenLabel?.textColor = .systemBackground
             }
@@ -143,15 +157,19 @@ class RootViewController: UIViewController {
         self.setScoreBoard()
         Alert.shared.alert(
             title: alert, alertAction: AlertAction(
-                title: "다음", style: .default, handler: { [weak self] _ in
-            self?.test()
-        })).show()
+                title: "다음", style: .default, handler: { [unowned self] _ in
+                    self.test()
+                })).show()
     }
     func setScoreBoard() {
         let size: CGFloat = 20
-        let firstText = "RIGHT:\(self.scoreCount)\n"
-        let middleText = "WRONG:\(self.totalCount - self.scoreCount)\n"
-        let lastText = "TOTAL:\(self.totalCount)"
+        let firstText = "정답:\(self.viewModel.scoreCount)\n"
+        var middleText = "오답:\(self.viewModel.wrongCount)\n"
+        var lastText = "모두:\(self.viewModel.scoreCount + self.viewModel.wrongCount)"
+        if self.viewModel.wrongCount == 0 {
+            middleText = ""
+            lastText = ""
+        }
         let text = NSMutableAttributedString(
             attributedString: NSAttributedString.attributes(
                 "\(firstText)\(middleText)\(lastText)",
@@ -166,9 +184,9 @@ class RootViewController: UIViewController {
     }
 }
 extension RootViewController {
-    func answer(numbers: [String]?) -> Int? {
+    func answer(numbers: [String]?, hiddenIndex: Int) {
         guard let numbers = numbers else {
-            return nil
+            return
         }
         var place: Int = 0
         let count = numbers.count
@@ -198,33 +216,11 @@ extension RootViewController {
             v.isHidden = v.tag > place
             v.backgroundColor = .clear
         }
-        let hiddenIndex = Int(arc4random()) % count
-        self.places[hiddenIndex].backgroundColor = .label
-        let hiddenPlace = self.places[hiddenIndex]
-        let hiddenLabel = hiddenPlace.subviews.first { view in
-            return type(of: view) == UILabel.self
-        } as? UILabel
-        print("Hidden number = \(hiddenLabel?.text ?? "")")
-        let hiddenInteger =  Int(hiddenLabel?.text ?? "")
-        self.viewModel.currentHiddenIndexs.append(hiddenIndex)
-        self.viewModel.currentHiddenIntegers[hiddenIndex] = hiddenInteger
         self.viewModel.currentHiddenIndex = hiddenIndex
-        return hiddenInteger
+        self.places[hiddenIndex].backgroundColor = .label
     }
 }
 
-
-//MARK: Class method
-/**
- extension RootViewController {
- static func instance() -> RootViewController {
- guard let vc = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(identifier: "RootViewController") as? RootViewController else {
- fatalError("Failed load RootViewController in storyboard.")
- }
- return vc
- }
- }
- */
 private extension UIStackView {
     func removeAllArrangedSubviews() {
         arrangedSubviews.forEach {

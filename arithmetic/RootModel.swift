@@ -20,8 +20,13 @@ import Combine
  */
 class RootModel {
     @Published var list = [Arithmetic]()
+    @Published var wrongList = [Problem]()
 }
 
+struct Problem {
+    let arithmetic: Arithmetic
+    let hiddenIndex: Int
+}
 
 struct Arithmetic {
     let first: UInt32
